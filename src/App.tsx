@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row, Nav, Navbar } from "react-bootstrap";
+import { Col, Container, Row, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Examenes from "./pages/Examenes.jsx";
 import Capacitaciones from "./pages/Capacitaciones.jsx";
+import CapacitacionesById from "./pages/CapacitacionesById";
+import Archivo from "./pages/Archivo.jsx";
 import Home from "./pages/Home.jsx";
 import { SendFill } from "react-bootstrap-icons";
 
@@ -51,16 +53,52 @@ function App() {
                   >
                     Login
                   </Nav.Link>
-                  <Nav.Link
-                    to="/capacitaciones"
-                    as={Link}
-                    className={
-                      urlPath === "/capacitaciones" ? "active text-primary" : ""
-                    }
-                    onClick={() => setPatchFunction("/capacitaciones")}
-                  >
-                    Capacitaciones
-                  </Nav.Link>
+                  <NavDropdown title="Capacitaciones" id="basic-nav-dropdown">
+                    <NavDropdown.Item>
+                      <Nav.Link
+                        to="/capacitaciones"
+                        as={Link}
+                        className={
+                          urlPath === "/capacitaciones"
+                            ? "active text-primary"
+                            : ""
+                        }
+                        onClick={() => setPatchFunction("/capacitaciones")}
+                      >
+                        Lista
+                      </Nav.Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+
+                    <NavDropdown.Item>
+                      <Nav.Link
+                        to="/capacitaciones-id"
+                        as={Link}
+                        className={
+                          urlPath === "/capacitaciones-id"
+                            ? "active text-primary"
+                            : ""
+                        }
+                        onClick={() => setPatchFunction("/capacitaciones-id")}
+                      >
+                        By id
+                      </Nav.Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+
+                    <NavDropdown.Item>
+                      <Nav.Link
+                        to="/archivo"
+                        as={Link}
+                        className={
+                          urlPath === "/archivo" ? "active text-primary" : ""
+                        }
+                        onClick={() => setPatchFunction("/archivo")}
+                      >
+                        Archivo
+                      </Nav.Link>
+                    </NavDropdown.Item>
+                  </NavDropdown>
                   <Nav.Link
                     to="/examenes"
                     as={Link}
@@ -82,6 +120,11 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/capacitaciones" element={<Capacitaciones />} />
+              <Route
+                path="/capacitaciones-id"
+                element={<CapacitacionesById />}
+              />
+              <Route path="/archivo" element={<Archivo />} />
               <Route path="/examenes" element={<Examenes />} />
             </Routes>
           </Col>

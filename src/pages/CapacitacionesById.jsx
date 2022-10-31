@@ -17,7 +17,6 @@ export function Capacitaciones() {
   };
   const fetchCapacitaciones = () => {
     if (localStorage.getItem("token") == null) {
-      console.log(res);
       MySwal.fire({
         title: "Token null",
         html: "Inicia sesion para obtener un nuevo token",
@@ -35,13 +34,12 @@ export function Capacitaciones() {
       headers: myHeaders,
     };
     fetch(
-      `https://www.galaxiaseguridadltda.com.co/galaxiacliente/public/api/sanctum/capacitaciones`,
+      `https://www.galaxiaseguridadltda.com.co/galaxiacliente/public/api/sanctum/capacitaciones/1`,
       requestOptions
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        SetRes(data.capacitaciones);
+        SetRes([data.capacitaciones]);
       })
       .catch((error) => console.log("error", error));
   };
@@ -58,7 +56,7 @@ export function Capacitaciones() {
     headers: myHeaders,
   };
 
-  fetch("https://www.galaxiaseguridadltda.com.co/galaxiacliente/public/api/sanctum/capacitaciones", requestOptions)
+  fetch("localhost/galaxiacliente/public/api/sanctum/capacitaciones/1", requestOptions)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);

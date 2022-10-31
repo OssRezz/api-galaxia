@@ -26,7 +26,6 @@ export function Login() {
   });
 
   const [res, SetRes] = useState("");
-  const [token, SetToken] = useState("");
 
   const IniciarSesion = () => {
     if (auth.identification == "" || auth.password == "") {
@@ -43,7 +42,7 @@ export function Login() {
       headers: { "Content-Type": "application/json" },
     };
     fetch(
-      `http://localhost/galaxiacliente/public/api/login?identification=${parseInt(
+      `https://www.galaxiaseguridadltda.com.co/galaxiacliente/public/api/login?identification=${parseInt(
         auth.identification
       )}&password=${auth.password}`,
       requestOptions
@@ -105,7 +104,7 @@ export function Login() {
     }
   }`;
   return (
-    <Row>
+    <Row className="d-flex align-items-center justify-content-center">
       <Col className="col-12 col-lg-4 mb-4">
         <Card className="shadow-sm">
           <Card.Header>
@@ -139,11 +138,15 @@ export function Login() {
         </Card>
       </Col>
       <Col className="col-12 col-lg-1 d-flex justify-content-center align-items-center mb-4">
-        <Button variant="outline-primary" onClick={(e) => IniciarSesion()}>
+        <Button
+          variant="outline-primary"
+          onClick={(e) => IniciarSesion()}
+          className="border-0"
+        >
           <ArrowRightCircle size={40} />
         </Button>
       </Col>
-      <Col className="col-12 col-lg-7 mb-4F">
+      <Col className="col-12 col-lg-7 mb-4">
         <Card className="shadow-sm">
           <Card.Header>
             <CodeSquare className="text-primary" /> <b>Response</b>
@@ -183,12 +186,10 @@ export function Login() {
               </Col>
               <Card.Title>Casos de uso</Card.Title>
               <Col>
-                <Accordion defaultActiveKey="0">
+                <Accordion>
                   <Accordion.Item eventKey="0">
                     <Accordion.Header>
-                      <b>
-                        Si los parámetros no existen o no tiene informacion
-                      </b>
+                      <b>Si los parámetros no existen o no tiene informacion</b>
                     </Accordion.Header>
                     <Accordion.Body>
                       <ListGroup>
