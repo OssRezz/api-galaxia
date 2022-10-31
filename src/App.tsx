@@ -36,34 +36,40 @@ function App() {
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                   <Nav.Link
-                    to="/"
+                    to="/api-galaxia"
                     as={Link}
-                    className={urlPath === "/" ? "active text-primary" : ""}
-                    onClick={() => setPatchFunction("/")}
+                    className={
+                      urlPath === "/api-galaxia" ? "active text-primary" : ""
+                    }
+                    onClick={() => setPatchFunction("/api-galaxia")}
                   >
                     Home
                   </Nav.Link>
                   <Nav.Link
-                    to="/login"
+                    to="/api-galaxia/login"
                     as={Link}
                     className={
-                      urlPath === "/login" ? "active text-primary" : ""
+                      urlPath === "/api-galaxia/login"
+                        ? "active text-primary"
+                        : ""
                     }
-                    onClick={() => setPatchFunction("/login")}
+                    onClick={() => setPatchFunction("/api-galaxia/login")}
                   >
                     Login
                   </Nav.Link>
                   <NavDropdown title="Capacitaciones" id="basic-nav-dropdown">
                     <NavDropdown.Item>
                       <Nav.Link
-                        to="/capacitaciones"
+                        to="/api-galaxia/capacitaciones"
                         as={Link}
                         className={
-                          urlPath === "/capacitaciones"
+                          urlPath === "/api-galaxia/capacitaciones"
                             ? "active text-primary"
                             : ""
                         }
-                        onClick={() => setPatchFunction("/capacitaciones")}
+                        onClick={() =>
+                          setPatchFunction("/api-galaxia/capacitaciones")
+                        }
                       >
                         Lista
                       </Nav.Link>
@@ -72,14 +78,14 @@ function App() {
 
                     <NavDropdown.Item>
                       <Nav.Link
-                        to="/capacitaciones-id"
+                        to="/api-galaxia/capacitaciones-id"
                         as={Link}
                         className={
-                          urlPath === "/capacitaciones-id"
+                          urlPath === "/api-galaxia/capacitaciones-id"
                             ? "active text-primary"
                             : ""
                         }
-                        onClick={() => setPatchFunction("/capacitaciones-id")}
+                        onClick={() => setPatchFunction("/api-galaxia/capacitaciones-id")}
                       >
                         By id
                       </Nav.Link>
@@ -88,24 +94,24 @@ function App() {
 
                     <NavDropdown.Item>
                       <Nav.Link
-                        to="/archivo"
+                        to="/api-galaxia/archivo"
                         as={Link}
                         className={
-                          urlPath === "/archivo" ? "active text-primary" : ""
+                          urlPath === "/api-galaxia/archivo" ? "active text-primary" : ""
                         }
-                        onClick={() => setPatchFunction("/archivo")}
+                        onClick={() => setPatchFunction("/api-galaxia/archivo")}
                       >
                         Archivo
                       </Nav.Link>
                     </NavDropdown.Item>
                   </NavDropdown>
                   <Nav.Link
-                    to="/examenes"
+                    to="/api-galaxia/examenes"
                     as={Link}
                     className={
-                      urlPath === "/examenes" ? "active text-primary" : ""
+                      urlPath === "/api-galaxia/examenes" ? "active text-primary" : ""
                     }
-                    onClick={() => setPatchFunction("/examenes")}
+                    onClick={() => setPatchFunction("/api-galaxia/examenes")}
                   >
                     Examenes
                   </Nav.Link>
@@ -117,15 +123,15 @@ function App() {
         <Row>
           <Col className="col-12">
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/capacitaciones" element={<Capacitaciones />} />
+              <Route path="/api-galaxia" element={<Home />} />
+              <Route path="/api-galaxia/login" element={<Login />} />
+              <Route path="/api-galaxia/capacitaciones" element={<Capacitaciones />} />
               <Route
-                path="/capacitaciones-id"
+                path="/api-galaxia/capacitaciones-id"
                 element={<CapacitacionesById />}
               />
-              <Route path="/archivo" element={<Archivo />} />
-              <Route path="/examenes" element={<Examenes />} />
+              <Route path="/api-galaxia/archivo" element={<Archivo />} />
+              <Route path="/api-galaxia/examenes" element={<Examenes />} />
             </Routes>
           </Col>
         </Row>
