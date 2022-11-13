@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/api-galaxia/static/css/main.c59cc657.css",
-    "main.js": "/api-galaxia/static/js/main.84854337.js",
+    "main.js": "/api-galaxia/static/js/main.c582f2c8.js",
     "static/js/787.26b3c150.chunk.js": "/api-galaxia/static/js/787.26b3c150.chunk.js",
     "index.html": "/api-galaxia/index.html",
     "main.c59cc657.css.map": "/api-galaxia/static/css/main.c59cc657.css.map",
-    "main.84854337.js.map": "/api-galaxia/static/js/main.84854337.js.map",
+    "main.c582f2c8.js.map": "/api-galaxia/static/js/main.c582f2c8.js.map",
     "787.26b3c150.chunk.js.map": "/api-galaxia/static/js/787.26b3c150.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c59cc657.css",
-    "static/js/main.84854337.js"
+    "static/js/main.c582f2c8.js"
   ]
 }
