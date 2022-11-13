@@ -1,19 +1,6 @@
 import React, { useState } from "react";
-import {
-  Row,
-  Col,
-  Card,
-  Button,
-  Form,
-  Accordion,
-  ListGroup,
-} from "react-bootstrap";
-import {
-  CodeSquare,
-  DoorOpen,
-  ArrowRightCircle,
-  QuestionDiamond,
-} from "react-bootstrap-icons";
+import { Row, Col, Card, Button, Form, Accordion, ListGroup } from "react-bootstrap";
+import { CodeSquare, DoorOpen, ArrowRightCircle, QuestionDiamond } from "react-bootstrap-icons";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
@@ -42,14 +29,16 @@ export function Login() {
       headers: { "Content-Type": "application/json" },
     };
     fetch(
-      `https://www.galaxiaseguridadltda.com.co/galaxiacliente/public/api/login?identification=${parseInt(
-        auth.identification
-      )}&password=${auth.password}`,
+      `https://www.galaxiaseguridadltda.com.co/galaxiacliente/public/api/login?identification=${parseInt(auth.identification)}&password=${
+        auth.password
+      }`,
       requestOptions
     )
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         localStorage.setItem("token", data.token);
+        localStorage.setItem("user", data.usuario.id);
         SetRes(data);
       });
   };
@@ -117,9 +106,7 @@ export function Login() {
                 <Form.Control
                   type="number"
                   placeholder="Enter identification"
-                  onChange={(e) =>
-                    handleState("identification", e.target.value)
-                  }
+                  onChange={(e) => handleState("identification", e.target.value)}
                   value={auth.identification}
                 />
               </Form.Group>
@@ -138,11 +125,7 @@ export function Login() {
         </Card>
       </Col>
       <Col className="col-12 col-lg-1 d-flex justify-content-center align-items-center mb-4">
-        <Button
-          variant="outline-primary"
-          onClick={(e) => IniciarSesion()}
-          className="border-0"
-        >
+        <Button variant="outline-primary" onClick={(e) => IniciarSesion()} className="border-0">
           <ArrowRightCircle size={40} />
         </Button>
       </Col>
@@ -153,13 +136,7 @@ export function Login() {
           </Card.Header>
           <Card.Body className="d-flex justify-content-center">
             <Row>
-              <pre>
-                {JSON.stringify(
-                  res == "" ? "Press the button to make a request." : res,
-                  null,
-                  2
-                )}
-              </pre>
+              <pre>{JSON.stringify(res == "" ? "Press the button to make a request." : res, null, 2)}</pre>
             </Row>
           </Card.Body>
         </Card>
@@ -172,8 +149,7 @@ export function Login() {
           <Card.Body>
             <Row>
               <Col className="col-12 d-flex justify-content-start mb-2">
-                <b>Url</b>:{" "}
-                <div className="mx-1 text-danger">public/api/login</div>
+                <b>Url</b>: <div className="mx-1 text-danger">public/api/login</div>
               </Col>
               <Col className="col-12 d-flex justify-content-start mb-2">
                 <b>Metodo</b>: <div className="mx-1 text-danger">POST</div>
@@ -194,8 +170,7 @@ export function Login() {
                     <Accordion.Body>
                       <ListGroup>
                         <ListGroup.Item>
-                          <b>status</b>: estado de la petición, en este caso de
-                          uso 404.
+                          <b>status</b>: estado de la petición, en este caso de uso 404.
                         </ListGroup.Item>
                         <ListGroup.Item>
                           <b>Message</b>: Errores de validación.
@@ -213,16 +188,13 @@ export function Login() {
                     <Accordion.Body>
                       <ListGroup>
                         <ListGroup.Item>
-                          <b>status</b>: estado de la petición, en este caso de
-                          uso 404. No se encontró el recurso
+                          <b>status</b>: estado de la petición, en este caso de uso 404. No se encontró el recurso
                         </ListGroup.Item>
                         <ListGroup.Item>
-                          <b>message</b>: Mensaje de respuesta. En este caso nos
-                          dice que no existe el usuario.
+                          <b>message</b>: Mensaje de respuesta. En este caso nos dice que no existe el usuario.
                         </ListGroup.Item>
                         <ListGroup.Item>
-                          <b>errors</b>: Campos que tienen errores en la
-                          información
+                          <b>errors</b>: Campos que tienen errores en la información
                         </ListGroup.Item>
                       </ListGroup>
                       <Col>
@@ -237,12 +209,10 @@ export function Login() {
                     <Accordion.Body>
                       <ListGroup>
                         <ListGroup.Item>
-                          <b>status</b>: estado de la petición, en este caso de
-                          uso 404. No se encontró el recurso
+                          <b>status</b>: estado de la petición, en este caso de uso 404. No se encontró el recurso
                         </ListGroup.Item>
                         <ListGroup.Item>
-                          <b>message</b>: Mensaje de respuesta. En este caso nos
-                          dice que la password es incorrecta.
+                          <b>message</b>: Mensaje de respuesta. En este caso nos dice que la password es incorrecta.
                         </ListGroup.Item>
                       </ListGroup>
                       <Col>
@@ -257,12 +227,10 @@ export function Login() {
                     <Accordion.Body>
                       <ListGroup>
                         <ListGroup.Item>
-                          <b>status</b>: Estado de la petición, en ese caso de
-                          uso 200, Todo Ok.
+                          <b>status</b>: Estado de la petición, en ese caso de uso 200, Todo Ok.
                         </ListGroup.Item>
                         <ListGroup.Item>
-                          <b>message</b>: Estado de la petición, en ese caso de
-                          uso 200, Todo Ok
+                          <b>message</b>: Estado de la petición, en ese caso de uso 200, Todo Ok
                         </ListGroup.Item>
                         <ListGroup.Item>
                           <b>token</b>: Token de autorización al sistema
